@@ -167,8 +167,8 @@ button {
 }
 
 .stat.paid .stat-icon {
-    color: var(--green);
-    background: var(--green-bg);
+    color: var(--orange);
+    background: var(--orange-bg);
 }
 
 /* TOOLBAR */
@@ -276,7 +276,7 @@ button {
 }
 
 .person.paid {
-    border-left: 4px solid var(--green);
+    border-left: 4px solid var(--orange);
     padding-left: 16px;
 }
 
@@ -366,8 +366,8 @@ button {
 }
 
 .badge.paid {
-    color: var(--green);
-    background: var(--green-bg);
+    color: var(--orange);
+    background: var(--orange-bg);
 }
 
 .actions {
@@ -400,8 +400,8 @@ button {
 
 .pay-btn {
     border: 0;
-    background: var(--green-bg);
-    color: var(--green);
+    background: var(--orange-bg);
+    color: var(--orange);
     padding: 8px 10px;
     border-radius: 8px;
     font-size: 11px;
@@ -409,7 +409,7 @@ button {
 }
 
 .pay-btn:hover {
-    background: #d9f3e5;
+    background: #fce7c5;
 }
 
 /* EMPTY */
@@ -729,8 +729,8 @@ button {
 
         <div class="stat paid">
             <div class="stat-top">
-                <span class="stat-label">Cleared</span>
-                <div class="stat-icon">✓</div>
+                <span class="stat-label">Paid?</span>
+                <div class="stat-icon">?</div>
             </div>
             <div class="stat-number" id="paidCount">0</div>
         </div>
@@ -753,7 +753,7 @@ button {
             <option value="overdue">Overdue</option>
             <option value="today">Due today</option>
             <option value="upcoming">Upcoming</option>
-            <option value="paid">Cleared</option>
+            <option value="paid">Paid?</option>
         </select>
     </div>
 
@@ -1008,7 +1008,7 @@ function statusBadge(person) {
 
         return `
             <span class="badge paid">
-                ✓ Cleared
+                Paid?
             </span>
         `;
     }
@@ -1184,7 +1184,7 @@ function createPersonHTML(person) {
 
             <div class="date">
                 <span class="date-label">
-                    ${status === "paid" ? "Paid" : "Due date"}
+                    ${status === "paid" ? "Paid?" : "Due date"}
                 </span>
 
                 ${
@@ -1208,9 +1208,9 @@ function createPersonHTML(person) {
                         <button
                             class="pay-btn"
                             onclick="markPaid('${person.id}')"
-                            title="Mark as paid"
+                            title="Mark as paid?"
                         >
-                            Paid
+                            Paid?
                         </button>
                     `
                     : `
@@ -1448,7 +1448,7 @@ function markPaid(id) {
     saveData();
     render();
 
-    showToast(`${person.name} marked as cleared ✓`);
+    showToast(`${person.name} marked as paid?`);
 }
 
 
